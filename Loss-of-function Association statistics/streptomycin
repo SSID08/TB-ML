@@ -1,0 +1,7 @@
+Position,Odds_Ratio,Adj._P,Gene_variant,Protein_variant,WHO_annotation,Lineage_Distribution
+1406760,3.097,2.19e-164,Rv1258c_c.580_581insC,Rv1258c_p.Glu194fs,Rv1258c_p.Glu194fs,['2.2 : 100.0%']
+3568434,5.754,0.0341,whiB7_c.245_246insTT,whiB7_p.Arg83fs,whiB7_p.Pro82Leu,['2.2 : 100.0%']
+3568488,0.167,4.14e-25,whiB7_c.191delG,whiB7_p.Gly64fs,whiB7_p.Gly64fs,['1.2 : 100.0%']
+4338020,7.041,0.00203,Rv3861_c.78delC,Rv3861_p.Ile27fs,NA,"['1.1 : 6.67%', '2.2 : 73.33%', '4.1 : 20.0%']"
+4338181,11.51,0.0144,Rv3861_c.239delG,Rv3861_p.Gly80fs,whiB6_p.Gln114fs,"['2.2 : 90.0%', '4.1 : 10.0%']"
+4407912,19.202,0.000507,gid_c.161_290del,gid_p.Val54fs,gid_p.Arg97Cys,['4.3 : 100.0%']

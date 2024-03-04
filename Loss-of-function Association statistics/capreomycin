@@ -1,0 +1,3 @@
+Position,Odds_Ratio,Adj._P,Gene_variant,Protein_variant,WHO_annotation,Lineage_Distribution
+1918335,26.896,2.42e-05,tlyA_c.397dupC,tlyA_p.Arg133fs,tlyA_p.Arg133fs,"['2.2 : 42.86%', '3.1 : 14.29%', '4.3 : 28.57%', '4.8 : 14.29%']"
+1918690,27.203,1.5e-13,tlyA_c.753_754dupGT,tlyA_p.Ser252fs,tlyA_p.Ser252fs,['4.3 : 100.0%']

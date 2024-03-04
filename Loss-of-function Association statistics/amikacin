@@ -1,0 +1,3 @@
+Position,Odds_Ratio,Adj._P,Gene_variant,Protein_variant,WHO_annotation,Lineage_Distribution
+3568434,2.143,0.0469,whiB7_c.245_246insTT,whiB7_p.Arg83fs,whiB7_p.Pro82Leu,['2.2 : 100.0%']
+4338201,11.718,0.000396,Rv3861_c.257dupC,Rv3861_p.His87fs,whiB6_p.Arg107Cys,['2.2 : 100.0%']

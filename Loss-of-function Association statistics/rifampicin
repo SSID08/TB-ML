@@ -1,0 +1,6 @@
+Position,Odds_Ratio,Adj._P,Gene_variant,Protein_variant,WHO_annotation,Lineage_Distribution
+3065022,12.923,0.00648,Rv2752c_c.1169dupC,Rv2752c_p.Arg391fs,Rv2752c_p.Asn392fs,"['2.2 : 80.0%', '4.8 : 20.0%']"
+3065150,19.39,0.00116,Rv2752c_c.1041_1042insA,Rv2752c_p.Val348fs,Rv2752c_p.Val348fs,['2.2 : 100.0%']
+3065203,15.079,0.00396,Rv2752c_c.988dupG,Rv2752c_p.Ala330fs,Rv2752c_p.Ala330fs,['2.2 : 100.0%']
+3065756,8.617,0.00396,Rv2752c_c.435delC,Rv2752c_p.Val146fs,Rv2752c_p.Val146fs,['2.2 : 100.0%']
+3065903,4.308,0.0333,Rv2752c_c.288_289insT,Rv2752c_p.Arg97fs,Rv2752c_p.Arg97fs,"['2.2 : 42.86%', '3 : 42.86%', '4.1 : 14.29%']"

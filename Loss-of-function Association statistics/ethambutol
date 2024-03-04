@@ -1,0 +1,2 @@
+Position,Odds_Ratio,Adj._P,Gene_variant,Protein_variant,WHO_annotation,Lineage_Distribution
+1416989,3.301,0.00112,embR_c.358delA,embR_p.Thr120fs,embR_p.Thr120fs,"['1.1 : 10.81%', '1.2 : 2.7%', '2.2 : 72.97%', '4.2 : 2.7%', '4.4 : 8.110000000000001%', '4.6 : 2.7%']"

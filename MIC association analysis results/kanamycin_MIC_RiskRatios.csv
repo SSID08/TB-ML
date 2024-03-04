@@ -1,0 +1,5 @@
+Genomic_Position,Susceptible_RR_ratio,Low_RR_ratio,Resistant_RR_ratio,Susceptible_P,Low_P,Resistant_P
+Intercept.,13.351,27.548,0.293,0,0,0
+1473246,0.025,0.047,50.165,0,0,0
+2715346,0.024,0.009,1.169,0,0,0.666
+2715342,0.011,0.038,0.039,0,0,0.005

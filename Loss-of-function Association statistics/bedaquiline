@@ -1,0 +1,2 @@
+Position,Odds_Ratio,Adj._P,Gene_variant,Protein_variant,WHO_annotation,Lineage_Distribution
+779130,27.374,3.35e-08,Rv0678_c.144dupC,Rv0678_p.Glu49fs,Rv0678_p.Glu49fs,"['2.2 : 57.14%', '3 : 2.3800000000000003%', '4.1 : 7.140000000000001%', '4.2 : 2.3800000000000003%', '4.3 : 21.43%', '4.4 : 9.520000000000001%']"
