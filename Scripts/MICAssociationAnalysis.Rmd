@@ -1,0 +1,85 @@
+```{r}
+#Load libraries
+library(nnet)
+library(tidyverse)
+```
+
+```{r}
+#Load path
+path='##path'
+drug_name=as.name(strsplit(x=basename(path=path),split = '_')[[1]][1])
+```
+
+```{r}
+#Load dataframe and create factor variables
+df=data.frame(read.csv(file = path,sep=',',header = T,stringsAsFactors = T,row.names = 1))
+df=df%>%drop_na(drug_name)
+df=df%>%rename('drug'=drug_name)
+df$drug=factor(df$drug,
+                        levels = c('Sus','Low','High','Resistant'))
+```
+
+```{r}
+POLR_regression=MASS::polr(formula = drug~ .,data = df,Hess = T)
+ctable=coef(summary(POLR_regression))
+
+p <- pnorm(abs(ctable[, "t value"]), lower.tail = FALSE) * 2
+
+## combined table
+ctable <- cbind(ctable, "p value" = p)
+ctable=data.frame(ctable)
+ctable$Padj=p.adjust(ctable$p.value,method = 'BH')
+ctable_fitler=ctable%>%dplyr::filter(Padj<0.01 & Value>=1)
+ctable_fitler=arrange(ctable_fitler,desc(Value))
+imp_cols=rownames(ctable_fitler)
+imp_cols=imp_cols[grep('^X',imp_cols)]
+imp_cols=c(imp_cols,'drug')
+
+df_filter=df[,imp_cols]
+```
+
+
+```{r}
+#Perform regression
+df_filter$drug=relevel(df_filter$drug,ref = 'High')
+mutlinomial_regression=multinom(formula = drug~.,Hess = T,model = T,
+                                data = df_filter)
+```
+```{r}
+assign(paste(drug_name,'df',sep = '_'),df_filter)
+```
+
+
+```{r}
+#Calculate p-values
+z <- summary(mutlinomial_regression)$coefficients/summary(mutlinomial_regression)$standard.errors
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+```
+
+```{r}
+#Put Regression results in dataframe
+multinom_results=data.frame('Coefficients'=summary(mutlinomial_regression)$coefficients)
+multinom_results=t(multinom_results)
+p=t(p)
+multinom_results=cbind(multinom_results,p)
+colnames(multinom_results)=c('Sus_Coef','Low_Coef','Resistant_Coef','Sus_P','Low_p','Resistant_p')
+rownames(multinom_results)=gsub(pattern='Coefficients[.]*',replacement = '',
+                                rownames(multinom_results))
+multinom_results=data.frame(multinom_results)
+multinom_results=multinom_results%>%mutate('RR_Sus'=exp(Sus_Coef),
+                                           'RR_Low'=exp(Low_Coef),
+                                           'RR_Resistant'=exp(Resistant_Coef))
+```
+
+```{r}
+assign(paste(drug_name,'Multinomial_Coefficients',sep = '_'),multinom_results)
+```
+
+```{r}
+Prop_object=df_filter%>%group_by(drug)%>%summarise_at(vars(starts_with('X')),list(mean=~mean(.),SD= ~sd(.)/sqrt(n())))
+assign(paste(drug_name, "Proportions", sep="_"), Prop_object)
+```
+
+```{r}
+#rm(multinom_results,mutlinomial_regression,p,Prop_object,z,ctable,ctable_fitler,df_filter, df,POLR_regression)
+```

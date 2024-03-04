@@ -1,9 +1,7 @@
-#import pickle
 import subprocess as sp 
 from collections import defaultdict
 import numpy as np
 import pandas as pd
-#import argparse
 import os
 import re
 
@@ -13,13 +11,12 @@ This script creates feature matrix from VCF files for downstream ML analysis
 
 lineage_dict={}
 
-with open('./Data/lineage_table/lineage_tracker.txt','r') as f:
+with open('##path','r') as f:
     for l in f:
         sample,lineage=l.strip().split(sep='\t')
         lineage_dict[sample]=lineage
 
-#for file in ['pyrazinamide.vcf.gz','ofloxacin.vcf.gz','clarithromycin.vcf.gz']:
-for file in os.listdir('./Files/Per_Drug_VCF_final'):
+for file in os.listdir('##path'):
     if file.endswith('.gz'):
         genos=defaultdict(dict)
         f=os.path.join('./Files/Per_Drug_VCF_final',file)
@@ -83,6 +80,6 @@ for file in os.listdir('./Files/Per_Drug_VCF_final'):
             pd_df=pd.DataFrame(data=genos_matrix,columns=my_keys)
             pd_df['Lineage']=np.array(lineage_list)
             pd_df['Phenotype']=np.array(Y)
-            pd_df.to_pickle(path=f'./Updated_Data/Whole_Genome_dataframes/{b_file}.pkl')
+            pd_df.to_pickle(path=f'##path/{b_file}.pkl')
         except Exception as e:
             print (f"File : {file} \t Error : {e}")
