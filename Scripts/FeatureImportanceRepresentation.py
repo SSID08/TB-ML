@@ -11,7 +11,7 @@ import subprocess as sp
 parser=argparse.ArgumentParser(description='Plot multi-dimensional feature importances of model')
 
 parser.add_argument('--model',help="Input model",required=True)
-parser.add_argument('--df',help='Dataframe of variant counts',required=True)
+parser.add_argument('--df',help='Dataframe with genotypes and phenotypes',required=True)
 parser.add_argument('--bed_file',help='Bed file for tracking gene names',required=True)
 parser.add_argument('--label_threshold',help='%tile threshold for adding labels to plot',required=True)
 parser.add_argument('--out_folder',help='Folder to store images',required=True)
@@ -19,7 +19,7 @@ parser.add_argument('--out_folder',help='Folder to store images',required=True)
 args=parser.parse_args()
 DR_name=re.sub('.pkl','',os.path.basename(args.df))
 
-pickled_bed=pickle.load(open('../BedFile_in_list.pkl','rb'))
+pickled_bed=pickle.load(open('../##path to bed file','rb'))
 gene_ids,gene_names=pickled_bed[0],pickled_bed[1]
 
 model=pickle.load(open(args.model,'rb'))['Model'].get_booster()
@@ -42,7 +42,7 @@ for i in range(0,len(annotations)):
 var_postions=[f'Chromosome:{ann}' for ann in annotations if re.search('^[0-9]',ann)]
 pos_to_ann={}
 try: 
-      for l in sp.Popen(rf"bcftools query -r {','.join(var_postions)} --regions-overlap 0 -f '%POS\t%TYPE\t%AC\t%ANN\n' ~/VCF/snpEff_annotated_vcf_DRonly.vcf.gz"\
+      for l in sp.Popen(rf"bcftools query -r {','.join(var_postions)} --regions-overlap 0 -f '%POS\t%TYPE\t%AC\t%ANN\n' ##VCF path"\
                         ,shell=True,stdout=sp.PIPE).stdout:
                  pos,type,AC,ann=l.decode().strip().split()
                  if type == 'SNP' or type =='INDEL':
